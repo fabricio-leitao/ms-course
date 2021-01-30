@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("workers")
+@RequiredArgsConstructor
 public class WorkerResource {
 
-  private WorkerRepository repository;
-
-  public WorkerResource(WorkerRepository repository) {
-    this.repository = repository;
-  }
+  private final WorkerRepository repository;
 
   @GetMapping
   public ResponseEntity<List<Worker>> findAll() {
